@@ -26,7 +26,7 @@ route.get("/anime", async function (req, res) {
             `/v1/anime?${queries}&per_page=${per_page}`
         );
         res.status(200).json({
-            ...response.data.data,
+            ...response.data,
         });
     } catch (error) {
         res.status(500).json({
