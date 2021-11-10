@@ -18,7 +18,7 @@ const queryToParams = (obj) => {
         .join("&");
 };
 
-route.get("/", async function (req, res) {
+route.get("/anime", async function (req, res) {
     const queries = queryToParams({ ...req.query });
     const per_page = 20;
     try {
