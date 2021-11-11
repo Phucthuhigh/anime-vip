@@ -34,7 +34,7 @@ class Controllers {
             });
         }
     }
-    async getEpisodeOfAnime(req, res) {
+    async getEpisodesOfAnime(req, res) {
         const { anime_id } = req.params;
         const queries = queryToParams({ ...req.query });
         try {
@@ -51,6 +51,19 @@ class Controllers {
             });
         }
     }
+    async getEpisodeOfAnime(req, res) {
+        const { episode_id } = req.params;
+        const queries = queryToParams({ ...req.query });
+        try {
+            const response = await instance.get(
+                `/v1/episode/${episode_id}?${queries}`
+            );
+            res.status(200).json({
+                ...response.data,
+            });
+        } catch (error) {}
+    }
+
     async getGenres(req, res) {
         try {
             const response = await instance(`v1/resources/1.0/0`);
