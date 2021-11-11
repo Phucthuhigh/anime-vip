@@ -1,1 +1,1 @@
-GET http://localhost:8000/api?page=1&title=one%20punch%20man
+GET http://localhost:8000/api/genres
