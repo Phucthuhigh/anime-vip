@@ -17,7 +17,7 @@ const queryToParams = (obj) => {
 };
 
 class Controllers {
-    async getAnime(req, res) {
+    async getAllAnime(req, res) {
         const queries = queryToParams({ ...req.query });
         const per_page = 20;
         try {
@@ -61,12 +61,32 @@ class Controllers {
             res.status(200).json({
                 ...response.data,
             });
-        } catch (error) {}
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                message: error.message,
+            });
+        }
     }
 
     async getGenres(req, res) {
         try {
             const response = await instance(`v1/resources/1.0/0`);
+            res.status(200).json({
+                ...response.data,
+            });
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                message: error.message,
+            });
+        }
+    }
+
+    async getAnime(req, res) {
+        const { id } = req.params;
+        try {
+            const response = await instance(`v1/anime/${id}`);
             res.status(200).json({
                 ...response.data,
             });
